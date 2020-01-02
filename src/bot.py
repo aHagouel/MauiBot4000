@@ -3,6 +3,7 @@ from __future__ import absolute_import, print_function
 from gpiozero import MotionSensor
 from datetime import datetime 
 import tweepy
+import time 
 import subprocess
 
 # pickup sensor on RaspberryPi
@@ -33,7 +34,7 @@ def tweet_picture(f):
 #Function to take picture with webcam and save with timestamp to default location. Returns picture location.
 def take_picture(file_path = '/home/pi/Development/MauiBot4000/media/img', t = datetime.now().strftime("%Y-%m-%d:%T")):
     command = "fswebcam -S 12 -r 1280x720 --no-banner " + file_path + t + '.jpg'
-    process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+    process = subprocess.call(command.split(), stdout=subprocess.PIPE)
     return file_path + t + '.jpg'
 
 #Sensor as a loop + printing for fun :P 
@@ -47,6 +48,7 @@ while True:
     tweet_picture(picture)
     print('Success!')
     print('Waiting for things to calm down...', end = '')
+    time.sleep(10)
     pir.wait_for_no_motion()
     print('No motion detected!')
     
