@@ -53,7 +53,7 @@ while True:
 			tweet_picture(picture)
 			print('Success!')
 			print('Waiting for things to calm down...', end = '')
-			time.sleep(10)
+			time.sleep(45)
 			pir.wait_for_no_motion()
 			print('No motion detected!')
 		else: 
