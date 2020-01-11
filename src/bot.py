@@ -32,7 +32,7 @@ def tweet_picture(f):
     ids = []
     media_response = api.media_upload(f)
     ids.append(media_response.media_id_string)
-    api.update_status('WOOF!', media_ids = ids)
+    api.update_status('WOOF! #dogs #dogsoftwitter', media_ids = ids)
 
 #Function to take picture with webcam and save with timestamp to default location. Returns picture location.
 def take_picture(file_path = '/home/pi/Development/MauiBot4000/media/img', t = datetime.now().strftime("%Y-%m-%d:%T")):
